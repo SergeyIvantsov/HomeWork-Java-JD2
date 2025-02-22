@@ -14,7 +14,7 @@ public class LibraryCustomRepositoryImpl implements LibraryCustomRepository {
 
     @Override
     public List<Reader> findReadersByAuthorName(String authorName) {
-        String query = "SELECT DISTINCT r FROM Reader r JOIN r.books b WHERE b.author.name = :authorName";
+        String query = "SELECT DISTINCT r FROM Reader r JOIN r.booksForReaders b WHERE b.author.name = :authorName";
         return entityManager.createQuery(query, Reader.class)
                 .setParameter("authorName", authorName).getResultList();
     }
