@@ -9,6 +9,9 @@ import java.util.List;
 @Repository
 public interface BookRepository extends CrudRepository<Book, Long> {
 
-    List<Book> findByTitleContaining(String title);
+    Iterable<Book> findByTitleContaining(String title);
+
+    List<Book> findByIsbnContaining(String isbn);
+
 
 }

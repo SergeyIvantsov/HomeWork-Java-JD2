@@ -17,7 +17,7 @@ import java.util.Set;
 @EqualsAndHashCode(exclude = "booksForReaders")
 @ToString(exclude = "booksForReaders")
 @Table(name = "readers")
-public class Reader {
+public class Reader implements Comparable<Reader> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +37,9 @@ public class Reader {
             joinColumns = {@JoinColumn(name = "reader_id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private Set<Book> booksForReaders = new HashSet<>();
+
+    @Override
+    public int compareTo(Reader r) {
+        return registrationDate.compareTo(r.registrationDate);
+    }
 }
